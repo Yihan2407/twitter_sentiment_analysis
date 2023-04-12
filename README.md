@@ -2,7 +2,7 @@
 
 This notebook examines a compendium of tweets collected from users on Twitter, with labels 0 and 1, denoting a negative and positive sentiment respectively. As part of an NLP project on Sentiment Analysis, several models are fitted to the dataset in an attempt to find the model that can best classify tweets as either Negative or Positive.
 
-## Required File “IT1244” containing:
+Files:
 - **twitter_sentiment_analysis.ipynb** 
 	- Jupyter Notebook containing the code
 - **dataset.csv** 
@@ -16,7 +16,6 @@ This notebook examines a compendium of tweets collected from users on Twitter, w
 - **glove.twitter.27B.100d.txt**
 	 - GloVe Text file containing global vectors for word representation
 
-**Ensure that the IT1244 File is saved into MyDrive of the Google Drive account connected to Colab after running the “Importing Libraries” chunk of code to ensure no errors!**
 ## Variables
 There are only 2 variables:
 
@@ -31,7 +30,7 @@ The notebook is structured as follows:
 4. Evaluation of models
 
 ## Running the Notebook
-### 1. Required Libraries:
+### Required Libraries:
 - pandas
 - numpy
 - regex
@@ -59,45 +58,8 @@ nltk.download('wordnet')
 
 **The command to install new libraries is `pip install <library-name>`, but it may differ depending on your version of Python.**
 
-### 2. Reading Dataset
-Place the folder labeled “IT1244, into MyDrive of the google Drive account linked to Colab.
 
-Then, run the following cell, which reads in the dataset as a pandas Data Frame:
-
-```
-df = pd.read_csv('drive/MyDrive/IT1244/dataset.csv', header = None)
-df.columns = ['label', 'text']
-```
-
-If an error occurs here, it is likely that
-a.) *pandas* was not imported correctly, or
-b.) The dataset is not in the right directory. 
-
-### 3. Data Preprocessing
-From the Markdown chunk titled **Data Preprocessing** to the Markdown chunk titled **Exploratory Data Analysis**, ensure that all code chunks in between the two aforementioned Markdown chunks are ran. This ensures that the helper functions are loaded in, and that the dataset is cleaned. 
-- The relevant comments can be found in the notebook.
-
-### 4. Exploratory Data Analysis
-Simply run all code chunks found.
-
-### 5. Train Test Split and Vectorization for NLP
-Ensure that the code chunk under **Train Test Split** is ran.
-This is where the dataset is split into the respective training and testing set.
-```
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.3, stratify = y, random_state = 0) 
-```
-
-Next, ensure that the code chunk under **Vectorization for NLP** is ran.
-This ensures that the dataset will be vectorized as per the code.
-```
-vectorizer = CountVectorizer() # converts text to token counts
-X_train_v = vectorizer.fit_transform(X_train) # fits and vectorizes text in training set
-X_test_v = vectorizer.transform(X_test) # vectorize text in testing set
-```
-
-**When in doubt, simply run all code chunks found in order.**
-
-### 6. Modelling
+### Modelling
 Before starting, ensure that **weights.h5**, **weights2.hdf5** and the **model** folder are located in IT1244 Folder saved in Google Drive. These are the weights or model obtained from training the various LSTM models on the dataset, and allow you to skip running the process of fitting the model again which takes a significant amount of computational time.
 
 For example,
@@ -169,7 +131,7 @@ Comments have been included where appropriate. Ideally, each model should be ran
 
 **Note: Tuning of each model takes a significant amount of computational time. You may choose to skip running the code chunks involving the tuning of the model which has already been commented out but can be ran by highlighting the commented out code chunks and using the shortcut Ctrl + /. Appropriate comments and annotations have been included, so they may be found easily.**
 
-### 7. Model Evaluation
+### Model Evaluation
 Simply run the  code chunk and a graph depicting the evaluation metrics for all models will be displayed.
 
 **If you encounter any errors here such as being unable to generate the graph, it is likely that one or more of the models under the *Modelling* section have not been ran, therefore the evaluation metrics for that model have not been generated yet**.
